@@ -3,20 +3,11 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    public int health = 100;
+    public Rigidbody myRigidbody;
     
     public float speed = 10.5f;
     public float rotationSpeed = 180f;
     
-    public string playerName = "Ben Dover";
-    public bool isAlive = true;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Debug.Log($"Hello, my name is {playerName}");
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,12 +18,15 @@ public class Movement : MonoBehaviour
         // Forward/Back movement
         if (Keyboard.current.wKey.isPressed)
         {
-            direction.y = 1;
+            // direction.y = 1;
+            direction = transform.up;
         }
 
         if (Keyboard.current.sKey.isPressed)
         {
-            direction.y = -1;
+            // direction.y = -1;
+            direction = transform.up * -1;
+            // because transform.down doesn't exist
         }
         
         // Left/Right Rotation
@@ -45,9 +39,12 @@ public class Movement : MonoBehaviour
         {
             rotationAngle = 1;
         }
+        
+        myRigidbody.AddForce(direction * speed * Time.deltaTime);
+        myRigidbody.AddTorque(Vector3.back * rotationAngle * rotationSpeed * Time.deltaTime);
 
-        transform.Translate(direction * Time.deltaTime * speed);
-        transform.Rotate(Vector3.back, rotationAngle * rotationSpeed * Time.deltaTime);
+        // transform.Translate(direction * Time.deltaTime * speed);
+        // transform.Rotate(Vector3.back, rotationAngle * rotationSpeed * Time.deltaTime);
         // Time.deltaTime -> the time between two frames
     }
 }

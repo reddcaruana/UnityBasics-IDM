@@ -41,6 +41,15 @@ public class ModernMovement : MonoBehaviour
     // Physics update - 50fps
     private void FixedUpdate()
     {
+        // Adjusts movement speed
         myRigidbody.linearVelocity = direction * speed;
+        
+        // Checks if there is movement
+        // If zero = no movement
+        if (direction.sqrMagnitude > 0.1f)
+        {
+            // Adjusts rotation
+            myRigidbody.rotation = Quaternion.LookRotation(direction);
+        }
     }
 }

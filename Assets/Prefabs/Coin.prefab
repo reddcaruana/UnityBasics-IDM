@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 523787835150069774}
   - component: {fileID: 7242138230208919769}
   - component: {fileID: 3528449815558348409}
+  - component: {fileID: -6178631896686194659}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -128,3 +129,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoRotate
   rotationSpeed: 90
+--- !u!114 &-6178631896686194659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443441467215632251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ce45c2187a945eda812d19f487f223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SelfDestruct
+  timer: 5

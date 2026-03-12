@@ -11,12 +11,22 @@ public class FollowPlayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        // Check the game object before
+        // accessing its transform
+        GameObject playerGO = GameObject.FindWithTag("Player");
+        if (playerGO != null)
+        {
+            player = playerGO.transform;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // If no player, stop the function
+        // Early Return
+        if (player == null) return;
+        
         // Calculate the next position to move to
         Vector3 target = Vector3.MoveTowards(
             transform.position,
